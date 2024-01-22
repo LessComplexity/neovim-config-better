@@ -3,7 +3,7 @@ local M = {}
 
 M.general = {
     n = {
-        [";"] = { ":", "enter command mode", opts = { nowait = true } },
+        -- [";"] = { ":", "enter command mode", opts = { nowait = true } },
         -- ["<C-j>"] = { ":m .+1<CR>==", "move line down" },
         -- ["<C-k>"] = { ":m .-2<CR>==", "move line up" },
     },
