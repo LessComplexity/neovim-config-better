@@ -1,23 +1,21 @@
-require "core"
+-- bootstrap lazy.nvim, LazyVim and your plugins
+require("config.lazy")
 
-local custom_init_path = vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
+-- Add C-c to copy to clipboard in all modes
+vim.api.nvim_set_keymap("n", "<C-c>", '"+y', { noremap = true })
+vim.api.nvim_set_keymap("v", "<C-c>", '"+y', { noremap = true })
+vim.api.nvim_set_keymap("i", "<C-c>", '<Esc>"+y', { noremap = true })
+-- Add C-v to paste from clipboard
+vim.api.nvim_set_keymap("n", "<C-v>", '"+p', { noremap = true })
+vim.api.nvim_set_keymap("i", "<C-v>", '<Esc>"+p', { noremap = true })
+vim.api.nvim_set_keymap("v", "<C-v>", '"+p', { noremap = true })
 
-if custom_init_path then
-  dofile(custom_init_path)
+vim.opt.tabstop = 4
+vim.opt.shiftwidth = 4
+vim.opt.expandtab = true
+vim.opt.clipboard = "unnamedplus"
+
+if vim.g.neovide then
+  -- Put anything you want to happen only in Neovide here
+  vim.opt.guifont = "JetBrainsMono Nerd Font Mono:h11"
 end
-
-require("core.utils").load_mappings()
-
-local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
-
--- bootstrap lazy.nvim!
-if not vim.loop.fs_stat(lazypath) then
-  require("core.bootstrap").gen_chadrc_template()
-  require("core.bootstrap").lazy(lazypath)
-end
-
-dofile(vim.g.base46_cache .. "defaults")
-vim.opt.rtp:prepend(lazypath)
-require "plugins"
-
-vim.g.copilot_no_tab_map = true

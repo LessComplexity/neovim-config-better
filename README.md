@@ -1,7 +1,4 @@
-# neovim-config-better
+# 💤 LazyVim
 
-How to install
-
-```bash
-git clone https://github.com/LessComplexity/neovim-config-better.git ~/.config/nvim
-```
+A starter template for [LazyVim](https://github.com/LazyVim/LazyVim).
+Refer to the [documentation](https://lazyvim.github.io/installation) to get started.
